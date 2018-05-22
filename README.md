@@ -104,3 +104,11 @@ Android 7.0 introduced the '[direct reply action](https://developer.android.com/
 [RemoteInput.Builder API](https://developer.android.com/reference/android/support/v4/app/RemoteInput.Builder). The direct
 reply action appears as an additional button in the notification that opens a text input. The title of this button and
 placeholder for the text input can both be customized.
+
+![Direct replies on Android](https://developer.android.com/images/ui/notifications/reply-button_2x.png)
+
+
+## Authors
+
+- Anita Woodruff
+- Peter Beverloo
