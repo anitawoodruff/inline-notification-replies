@@ -3,6 +3,7 @@
 An [addition to the Notifications API](https://github.com/whatwg/notifications/compare/master...anitawoodruff:master) to
 allow users to type a text reply to a notification within the notification's own UI.
 
+
 ## The Problem
 
 Notifications by their nature are interruptive. For notifications that require a direct response, e.g. an urgent chat message,
@@ -12,6 +13,7 @@ reply. This can be disruptive and time-consuming.
 Many native notification centres (including those on Android N+, Mac OS and Windows) have an API for apps to display
 notifications which let users type a reply from the notification UI itself without opening the app. This feature is currently
 inaccessible to websites.
+
 
 ## Use Cases
 
@@ -24,6 +26,7 @@ limited to opening a tab containing an input field when the notification is clic
 
 In all these cases notification inline replies would allow users to quickly type a short reply to a message they receive
 with minimal friction (no need to open a tab, find the right text box, and then close the tab). 
+
 
 ## Proposal
 
@@ -46,6 +49,7 @@ The addition to the notification event is:
 - **reply** : a DOMString containing the user's reply, or null if the user activated a non-text action button, or was not
 able to input a reply due to platform limitations - in this case the site would be expected to handle the event as it would
 have prior to the introduction of this feature (e.g. by opening a tab for the user to type a reply).
+
 
 ## Example Code
 
@@ -70,11 +74,32 @@ Retrieving an inline reply from a message (from within a Service Worker):
       var reply = event.reply;
     }
 
+
+## Potential for abuse
+
+Potential for phishing attacks via spoof notifications soliciting sensitive data is the most worrying concern.
+It's already possible for sites to show spoof UI (eg a login screen) in response to a notification click; however,
+the fact that notifications are part of browser UI could conceivably instill more trust than a webpage asking
+for the same information. 
+
+- **This can be mitigated by clear attribution** - all major implementations already do this, and a note will be
+added to the spec to make it clear that notifications should be clearly attributed to the origin of the service worker
+or document which showed them.
+
+There's two other factors which help here:
+
+- **requires a permission** - A spoof site would first need to gain notification permission from the user
+before it could show a notification abusing this feature.
+
+- **notifications are https-only** - Notifications can only be sent from secure origins.
+
+
 ## Appendix: alternatives considered
 
 We considered adding a new Service Worker event for handling action button activations carrying an inline response, but didn’t
 pursue this because developers are already accustomed to handling all other activations, regardless of context, as part of
 `notificationclick`.
+
 
 ## Appendix: native notification center APIs
 
