@@ -84,14 +84,10 @@ for the same information.
 
 - **This can be mitigated by clear attribution** - all major implementations already do this, and a note will be
 added to the spec to make it clear that notifications should be clearly attributed to the origin of the service worker
-or document which showed them.
+or document which showed them. This attribution can be considered reliable since notifications may only be shown by secure
+origins.
 
-There's two other factors which help here:
-
-- **requires a permission** - A spoof site would first need to gain notification permission from the user
-before it could show a notification abusing this feature.
-
-- **notifications are https-only** - Notifications can only be sent from secure origins.
+- A further mitigation is that showing notifications **requires a permission** - a spoof site would first need to gain notification permission from the user before it could show a notification abusing this feature.
 
 
 ## Appendix: alternatives considered
