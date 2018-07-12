@@ -26,7 +26,7 @@ notification inline replies.
 ### 3.9 Does this specification allow an origin access to aspects of a user’s local computing environment?
 
 Sites will be able to detect whether users are on a system that supports inline replies, by checking whether
-the `reply` property on the `notificationclick` event is non-null. Generally this corresponds to OS and OS
+the `reply` property on the notificationclick event is non-null. Generally this corresponds to OS and OS
 version (e.g. on Android they are supported from Nougat), but on Linux there are multiple notification managers
 available which may differ in their support.
 
