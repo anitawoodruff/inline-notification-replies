@@ -122,7 +122,7 @@ https://developer.apple.com/documentation/foundation/nsusernotification
 
 Android 7.0 introduced the '[direct reply action](https://developer.android.com/training/notify-user/build-notification#reply-action)'
 , which can be attached to a notification using the
-[RemoteInput.Builder API](https://developer.android.com/reference/android/support/v4/app/RemoteInput.Builder). The direct
+[RemoteInput.Builder API](https://developer.android.com/reference/androidx/core/app/RemoteInput.Builder). The direct
 reply action appears as an additional button in the notification that opens a text input. The title of this button and
 placeholder for the text input can both be customized.
 
