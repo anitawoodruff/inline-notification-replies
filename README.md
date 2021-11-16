@@ -55,25 +55,30 @@ have prior to the introduction of this feature (e.g. by opening a tab for the us
 
 Showing a notification that enables an inline reply:
 
-    navigator.serviceWorker.ready.then((serviceWorker) => {
-        serviceWorker.showNotification("New Message", {
-      body: "Marvin says: Hello",
-      actions: {
-        "action": "reply",
-        "type": "text",
-        "title": "Reply",
-        "placeholder": "Respond to Marvin..."
-      }
-      });
-    })
+```js
+navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
+  serviceWorkerRegistration.showNotification("New Message", {
+    body: "Marvin says: Hello",
+    actions: [
+      {
+        action: "reply",
+        type: "text",
+        title: "Reply",
+        placeholder: "Respond to Marvin...",
+      },
+    ],
+  });
+});
+```
 
 Retrieving an inline reply from a message (from within a Service Worker):
 
-    self.onnotificationclick = (event) => {
-      var notification = event.notification;
-      var reply = event.reply;
-    }
-
+```js
+self.onnotificationclick = (event) => {
+  const notification = event.notification;
+  const reply = event.reply;
+};
+```
 
 ## Potential for abuse
 
